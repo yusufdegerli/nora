@@ -3,15 +3,25 @@ import React, { useMemo } from 'react';
 const EMOJI_LIST = ['🩺', '💊', '🧬', '🩸', '🏥', '⚕️', '🩹', '🦷', '🚑', '💉', '🥼', '🔬'];
 
 export default function FloatingEmojis() {
-  // Emojilerin özellikleri sadece bileşen ilk render edildiğinde oluşturulsun ki re-renderlarda zıplamasınlar
   const emojis = useMemo(() => {
-    return Array.from({ length: 15 }).map((_, i) => {
+    // 20 adet emojiyi ekranın yatay eksenine eşit aralıklarla (%5'lik dilimler halinde) dağıtıyoruz.
+    return Array.from({ length: 20 }).map((_, i) => {
       const emoji = EMOJI_LIST[Math.floor(Math.random() * EMOJI_LIST.length)];
-      const left = `${Math.random() * 100}vw`;
-      const animationDuration = `${15 + Math.random() * 20}s`; // 15-35 saniye arası hız
-      const animationDelay = `-${Math.random() * 20}s`; // Sayfa yüklenir yüklenmez ekranda olmaları için eksi delay
-      const fontSize = `${1.5 + Math.random() * 1.5}rem`;
-      const opacity = 0.1 + Math.random() * 0.3; // Yumuşak, arkaplanı boğmayan şeffaflık
+      
+      // Ekrana simetrik (eşit aralıklarla) yayılmasını sağlıyoruz
+      const left = `${(i * 5)}vw`; 
+      
+      // Hareket hızını yavaşlatıyoruz (30 ile 60 saniye arasında)
+      const duration = 30 + Math.random() * 30; 
+      const animationDuration = `${duration}s`; 
+      
+      // Sayfa ilk açıldığında hepsi aşağıda beklemek yerine 
+      // farklı zaman dilimlerinden başlasın diye eksi bir delay veriyoruz.
+      // Bu sayede dikey eksende de her tarafa dağılmış gibi gözükecekler.
+      const animationDelay = `-${Math.random() * duration}s`; 
+      
+      const fontSize = `${1.5 + Math.random() * 2}rem`;
+      const opacity = 0.15 + Math.random() * 0.25; 
 
       return {
         id: i,

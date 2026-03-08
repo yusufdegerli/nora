@@ -185,20 +185,37 @@ footer {
 }
 
 /* Floating Emoji Animations */
+
 @keyframes floatUp {
+
   0% {
-    transform: translateY(100vh) rotate(0deg);
+
+    transform: translateY(110vh) rotate(0deg);
+
   }
+
   100% {
+
     transform: translateY(-20vh) rotate(360deg);
+
   }
+
 }
 
+
+
 .floating-emoji {
+
   position: absolute;
-  bottom: -10vh;
+
+  top: 0;
+
   animation-name: floatUp;
+
   animation-timing-function: linear;
+
   animation-iteration-count: infinite;
+
   user-select: none;
+
 }
