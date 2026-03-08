@@ -35,7 +35,7 @@ export default function Admin() {
 
     // 2. Durum: Şifre Doğruysa
     if (
-      credentials.username === process.env.REACT_APP_ADMIN_USERNAME &&
+      credentials.username.toLowerCase() === (process.env.REACT_APP_ADMIN_USERNAME || '').toLowerCase() &&
       credentials.password === process.env.REACT_APP_ADMIN_PASSWORD
     ) {
       setIsAuthenticated(true);
