@@ -93,7 +93,7 @@ export default function Admin() {
                 />
               </div>
               <p style={{ fontSize: '0.8rem', marginTop: '0.5rem', color: 'var(--text-muted)' }}>
-                İpucu: admin: [babaannelerin sana koyduğu isim]
+                İpucu: admin: babaannelerin sana koyduğu isim
               </p>
             </div>
 
